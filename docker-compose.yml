@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  node:
+    container_name: proyecto_final_yamilka_erazo
+    restart: always
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: proyecto_final_yamilka_erazo_db
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  mongo-admin:
+    container_name: proyecto_final_yamilka_erazo_db_admin
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
